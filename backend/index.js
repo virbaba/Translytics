@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 // Connect to MongoDB
 connectDB();
 
+// Routes
+app.use('/api/transactions', transactionRoutes);
+
  // Static Files Middleware (for production)
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
@@ -27,9 +30,6 @@ app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
-
-// Routes
-app.use('/api/transactions', transactionRoutes);
 
 // Start Server
 app.listen(PORT, () => {
