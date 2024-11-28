@@ -12,8 +12,7 @@ const App = () => {
   useEffect(() => {
     const initializeDatabase = async () => {
       try {
-        const response = await axios.get("/api/transactions/initialize");
-        const data = await response.json();
+        await axios.get("/api/transactions/initialize");
       } catch (error) {
         console.error("Error initializing database:", error);
       }
